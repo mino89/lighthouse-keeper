@@ -5,6 +5,8 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthPermissionService } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.com
   imports: [
     CommonModule,
     MaterialModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    HttpClientModule
   ],
   exports: [
     MaterialModule,
@@ -26,6 +29,9 @@ import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.com
     FooterComponent,
     LayoutComponent,
     NgOptimizedImage
+  ],
+  providers: [
+    AuthPermissionService,
   ]
 })
 export class SharedModule { }
