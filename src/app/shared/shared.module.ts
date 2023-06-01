@@ -5,10 +5,11 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.component';
-import {  HttpClientModule } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthPermissionService } from './guards/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EssentialComponent } from './components/essential-component/essential.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,11 @@ import { EssentialComponent } from './components/essential-component/essential.c
   ],
   providers: [
     AuthPermissionService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi:true
+    },
   ]
 })
 export class SharedModule { }

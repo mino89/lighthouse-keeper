@@ -1,19 +1,33 @@
 {
   "users": [
     {
-      "username": "test",
       "email": "test@test.it",
-      "password": "µë-",
+      "password": "$2a$10$s65fgBK7bpe7By1lOFi6rOsTwoXrCtKRrLxojXWbj02XgduuEvva.",
+      "username": "test",
       "name": "test",
-      "token": "test",
       "id": 1
+    },
+    {
+      "email": "mino@mino.it",
+      "password": "$2a$10$uCjeCrQz3l7qvY3cJywx0O8SfUANAbxbmuoe.I02zhNtbGNx6KzcS",
+      "username": "mion",
+      "name": "mino",
+      "id": 2
+    },
+    {
+      "email": "test2@test.it",
+      "password": "$2a$10$0knOyJDM9i92/EbrkEKx5./m9HS5AKJ3nJvJnZ8mNYiWaJY3Pte.e",
+      "username": "test",
+      "name": "test",
+      "id": 3
     }
   ],
   "comments": [
     {
       "id": 1,
       "body": "some comment",
-      "postId": 1
+      "postId": 1,
+      "userId": 1
     }
   ],
   "profile": {

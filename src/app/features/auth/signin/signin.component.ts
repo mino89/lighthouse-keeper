@@ -24,7 +24,7 @@ export class SigninComponent extends EssentialComponent{
   }
 
   public handleSignIn() {
-    this.authService.login(this.signInForm.value as UserAuth).subscribe();
+    this.authService.login(this.signInForm.value as UserAuth);
   }
 
 }

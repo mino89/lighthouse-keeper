@@ -15,6 +15,7 @@ export class AuthPermissionService{
       this.router.navigate(['/auth'])
       return false
     }else{
+      this.authService.loggedInSubject.next(true)
       return true
     }
   }
