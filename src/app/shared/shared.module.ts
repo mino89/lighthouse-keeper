@@ -5,8 +5,10 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule } from '@angular/common/http';
 import { AuthPermissionService } from './guards/auth.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EssentialComponent } from './components/essential-component/essential.component';
 
 @NgModule({
   declarations: [
@@ -15,15 +17,20 @@ import { AuthPermissionService } from './guards/auth.guard';
        HeaderComponent,
        FooterComponent,
        LayoutComponent,
-       ThemeSwitchComponent
+       ThemeSwitchComponent,
+       EssentialComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     NgOptimizedImage,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     HeaderComponent,
     FooterComponent,

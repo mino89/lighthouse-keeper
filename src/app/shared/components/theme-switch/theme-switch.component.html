@@ -1,14 +1,18 @@
 <ng-container *ngIf="selectedScheme === themes.dark; else light">
   <button mat-icon-button
           (click)="switchScheme(themes.light)"
-          aria-label="Switch to light theme">
+          aria-label="Switch to light theme"
+          matTooltip="light theme"
+          >
     <mat-icon>light_mode</mat-icon>
   </button>
 </ng-container>
 <ng-template #light>
   <button mat-icon-button
           (click)="switchScheme(themes.dark)"
-          aria-label="Switch to dark theme">
+          aria-label="Switch to dark theme"
+          matTooltip="dark theme"
+          >
     <mat-icon>dark_mode</mat-icon>
   </button>
 </ng-template>

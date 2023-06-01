@@ -5,3 +5,8 @@ export interface User {
   password: string
   token: string
 }
+
+export interface UserAuth{
+  email: string
+  password: string
+}

@@ -3,7 +3,7 @@ import { FetchDataService } from './fetch-data.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FeedbackService } from './feedback.service';
 import { BehaviorSubject, Observable, catchError, switchMap, tap, throwError } from 'rxjs';
-import { User } from '../models/user';
+import { User, UserAuth } from '../models/user';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -56,11 +56,11 @@ export class AuthService extends FetchDataService {
   }
 
   // again this method is created for mock purposes in production response will be controlled by server
-  public login(email: string, password: string): Observable<User[] | unknown> {
-    return this.usersList(email).pipe(
+  public login(params: UserAuth): Observable<User[] | unknown> {
+    return this.usersList(params.email).pipe(
       switchMap((res: any) => {
         if (res.length) {
-          if (btoa(res[0].password) === password) {
+          if (btoa(res[0].password) === params.password) {
             this.signIn(res[0].token);
             return res
           } else {

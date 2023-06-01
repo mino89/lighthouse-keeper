@@ -1,10 +1,22 @@
 <mat-toolbar color="primary" class="flex justify-between mat-elevation-z4">
   <div class="flex items-center">
     <figure class="mr-4 m-0">
-      <img ngSrc="{{logo}}" width="24" height="36"  [alt]="title + 'logo'">
+      <img ngSrc="{{logo}}" width="24" height="36" [alt]="title + 'logo'">
     </figure>
     <span>{{title}}</span>
   </div>
+  <div class="flex items-center">
 
-  <lhk-theme-switch/>
+    <lhk-theme-switch />
+
+    <button
+      *ngIf="loggedIn$ | async"
+      mat-icon-button
+      (click)="logout()"
+      aria-label="Logout App"
+      matTooltip="Exit App"
+      >
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>

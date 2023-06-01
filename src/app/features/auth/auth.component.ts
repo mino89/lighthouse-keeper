@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,5 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './auth.component.html'
 })
 export class AuthComponent {
+  constructor(
 
+  ) {}
 }

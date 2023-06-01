@@ -1,0 +1,23 @@
+import { AbstractControl } from '@angular/forms';
+
+export class CustomValidators {
+
+  static MatchingPasswords(control: AbstractControl) {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('repeatPassword')?.value;
+    const currentErrors = control.get('repeatPassword')?.errors
+    const confirmControl = control.get('repeatPassword')
+
+    if (compare(password, confirmPassword)) {
+      confirmControl?.setErrors({ ...currentErrors, not_matching: true });
+    } else {
+
+      currentErrors && confirmControl?.setErrors(currentErrors)
+    }
+
+  }
+}
+
+function compare(password: string, confirmPassword: string) {
+  return password !== confirmPassword && confirmPassword !== ''
+}
