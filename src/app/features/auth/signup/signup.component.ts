@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EssentialComponent } from 'src/app/shared/components/essential-component/essential.component';
@@ -9,6 +9,7 @@ import { CustomValidators } from 'src/app/shared/validators/match-password.valid
 @Component({
   selector: 'lhk-signup',
   templateUrl: './signup.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupComponent extends EssentialComponent {
 

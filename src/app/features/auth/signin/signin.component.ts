@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EssentialComponent } from 'src/app/shared/components/essential-component/essential.component';
 import { UserAuth } from 'src/app/shared/models/user';
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'lhk-signin',
   templateUrl: './signin.component.html',
-
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SigninComponent extends EssentialComponent{
 
