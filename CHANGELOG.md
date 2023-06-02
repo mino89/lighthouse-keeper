@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/mino89/lighthouse-keeper/compare/v0.1.0...v0.2.0) (2023-06-02)
+
+
+### Features
+
+* implemented loading ([a16795b](https://github.com/mino89/lighthouse-keeper/commit/a16795b24cb1780a93dd5f629775b98ff5255492))
+
 ## 0.1.0 (2023-06-01)
 
 
