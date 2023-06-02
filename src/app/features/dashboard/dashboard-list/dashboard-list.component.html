@@ -1,6 +1,54 @@
 <div [class]="classUtils.container">
-  <button mat-raised-button color="primary" (click)="handleCreateSite()">Open Dialog</button>
-  <pre *ngIf="sites$ | async as sites">
-    {{ sites| json}}
-  </pre>
+  <div lhk-sub-header>
+    <div lhk-sub-header-info>
+      <h1>Dashboard</h1>
+      <div class="flex gap-2 items-baseline">
+        <mat-icon>face</mat-icon>
+        <h2 class="text">
+          {{(currentUser$ | async).email}}
+        </h2>
+      </div>
+    </div>
+    <div lhk-sub-header-actions class="flex gap-2">
+      <button
+      mat-raised-button
+      color="primary"
+      (click)="handleCreateSite()">
+        Create Website
+      </button>
+    </div>
+  </div>
+
+  <lhk-loading-switch class="block my-8">
+    <ng-container lhk-loading-on>
+      <lhk-skeleton [count]="5">
+      </lhk-skeleton>
+    </ng-container>
+    <ng-container lhk-loading-off>
+      <div class="grid md:grid-cols-4 gap-4"
+      *ngIf="sites$ | async as sites">
+          <mat-card *ngFor="let site of sites">
+            <mat-card-header>
+              <mat-card-title>
+                {{site.title}}
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <h2>
+                <strong>{{site.url}}</strong>
+              </h2>
+              <p>{{site.description}}</p>
+              </mat-card-content>
+            <mat-card-actions>
+              <button
+                [routerLink]="['/dashboard', site.id]"
+                mat-button
+                color="primary">
+                  Detail
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+    </ng-container>
+  </lhk-loading-switch>
 </div>

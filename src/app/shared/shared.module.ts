@@ -12,6 +12,10 @@ import { EssentialComponent } from './components/essential-component/essential.c
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ModalContentComponent } from './services/modal-content/modal-content.component';
+import { SubHeaderComponent } from './components/sub-header/sub-header.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { LoadingSwitchComponent } from './components/loading-switch/loading-switch.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { ModalContentComponent } from './services/modal-content/modal-content.co
     ThemeSwitchComponent,
     EssentialComponent,
     LoadingComponent,
-    ModalContentComponent
+    ModalContentComponent,
+    SubHeaderComponent,
+    SkeletonComponent,
+    LoadingSwitchComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +38,7 @@ import { ModalContentComponent } from './services/modal-content/modal-content.co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     FormsModule,
@@ -40,7 +48,11 @@ import { ModalContentComponent } from './services/modal-content/modal-content.co
     FooterComponent,
     LayoutComponent,
     ModalContentComponent,
+    SubHeaderComponent,
     NgOptimizedImage,
+    NgxSkeletonLoaderModule,
+    SkeletonComponent,
+    LoadingSwitchComponent,
   ],
   providers: [
     AuthPermissionService,

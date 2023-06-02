@@ -1,0 +1,7 @@
+<ng-container *ngIf="loading$ | async; else loaded">
+  <ng-content select="[lhk-loading-on]"></ng-content>
+</ng-container>
+
+<ng-template #loaded>
+  <ng-content select="[lhk-loading-off]"></ng-content>
+</ng-template>

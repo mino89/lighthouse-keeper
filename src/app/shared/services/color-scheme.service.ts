@@ -1,4 +1,5 @@
 import {Injectable, Renderer2, RendererFactory2} from '@angular/core';
+import { BehaviorSubject, of } from 'rxjs';
 
 export enum Themes{
   dark= 'dark',
@@ -9,7 +10,9 @@ export enum Themes{
 })
 export class ColorSchemeService {
   private renderer: Renderer2
+  private preferColorSchemeSubject = new BehaviorSubject<string>(this.prefersColorScheme)
   themes = [Themes.dark, Themes.light]
+  prefersColorScheme$ = this.preferColorSchemeSubject.asObservable()
   get prefersColorScheme(): Themes{
     const item = localStorage.getItem('prefers-color')
     return item as Themes
@@ -53,6 +56,7 @@ export class ColorSchemeService {
     if(theme){
       this.prefersColorScheme = theme
       this.applyTheme(this.prefersColorScheme)
+      this.preferColorSchemeSubject.next(this.prefersColorScheme)
     }else{
       localStorage.removeItem('prefers-color')
       this.checkPreferredColorScheme()

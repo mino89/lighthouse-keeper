@@ -5,17 +5,25 @@ import { DashboardSitesDialogComponent } from '../dashboard-sites-dialog/dashboa
 import { MatDialog} from '@angular/material/dialog';
 import { EssentialComponent } from 'src/app/shared/components/essential-component/essential.component';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'lhk-dashboard-list',
-  templateUrl: './dashboard-list.component.html'
+  templateUrl: './dashboard-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardListComponent extends EssentialComponent {
   sites$ = this.sitesService.getSites();
+  currentUser$ = this.authService.currentUser$;
+
   constructor(
     private sitesService: SitesService,
     private dialog: MatDialog,
-    private feedback: FeedbackService
+    private feedback: FeedbackService,
+    private authService: AuthService,
+    private loadingService: LoadingService
   ) { super()}
 
   public handleCreateSite(): void {

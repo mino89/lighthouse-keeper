@@ -15,7 +15,7 @@ export class LoadingService {
     return of(null)
     .pipe(
       tap(() => this.loadingOn()),
-      switchMap(() => obs$),
+      concatMap(() => obs$),
       finalize(() => this.loadingOff())
     )
   }

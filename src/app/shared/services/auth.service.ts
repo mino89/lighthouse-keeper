@@ -6,10 +6,9 @@ import { BehaviorSubject, Observable, catchError, of, switchMap, tap, throwError
 import { User, UserAuth } from '../models/user';
 import { Router } from '@angular/router';
 import { HttpAuthResponse } from '../models/auth';
-import { LoadingService } from './loading.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService extends FetchDataService {
 
@@ -21,8 +20,6 @@ export class AuthService extends FetchDataService {
     http: HttpClient,
     feedback: FeedbackService,
     private router: Router,
-
-    private loadingService: LoadingService
   ) {
     super(http,feedback);
   }

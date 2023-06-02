@@ -1,0 +1,38 @@
+
+<ng-container *ngIf="type == 'grid'; else list">
+  <div [class]="styles.gridClass">
+    <mat-card
+      *ngFor="let item of generateSkeleton(this.count)">
+      <mat-card-content>
+        <ngx-skeleton-loader
+          animation="progress-dark"
+          [theme]="(theme | async) === 'dark' ? stylesDark.title : styles.title">
+        </ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          animation="progress-dark"
+          [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
+        </ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          animation="progress-dark"
+          [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
+        </ngx-skeleton-loader>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>
+<ng-template #list>
+  <div>
+    <mat-card
+      class="mb-8"
+      *ngFor="let item of generateSkeleton(this.count)">
+      <mat-card-content>
+        <div  *ngFor="let row of generateSkeleton(this.rowsPerItem)">
+          <ngx-skeleton-loader
+            animation="progress-dark"
+            [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
+          </ngx-skeleton-loader>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

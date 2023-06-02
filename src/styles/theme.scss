@@ -11,12 +11,12 @@ $app-theme:(color: (
   primary: $app-primary,
   accent: $app-accent,
   warn: $app-warn,
-),
-// Only include `typography` and `density` in the default dark theme.
-typography: mat.define-typography-config(
-  $font-family: 'Roboto, sans-serif',
-),
-density: 0,
+  ),
+  // Only include `typography` and `density` in the default dark theme.
+  typography: mat.define-typography-config(
+    $font-family: 'Roboto, sans-serif',
+  ),
+  density: 0,
 );
 // Define a dark theme
 $dark-theme: mat.define-dark-theme($app-theme);
@@ -31,3 +31,6 @@ $light-theme: mat.define-light-theme($app-theme);
   background-color: map.get(mat.$dark-theme-background-palette, background);
   color: map.get(mat.$dark-theme-foreground-palette, text);
 }
+
+$app-typography: mat.define-typography-config();
+@include mat.typography-hierarchy($app-typography);
