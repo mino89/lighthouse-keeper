@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ModalContentComponent {
   @Input() title!: string;
   @Input() disabled: boolean = false;
+  @Input() confirmText: string = 'Confirm';
+  @Input() cancelText: string = 'Cancel';
   @Output() onConfirmAction = new EventEmitter<void>();
-
   public confirmActionHandle(): void {
-    console.log('confirm')
     this.onConfirmAction.emit();
   }
 }

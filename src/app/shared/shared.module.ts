@@ -11,11 +11,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EssentialComponent } from './components/essential-component/essential.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoadingComponent } from './components/loading/loading.component';
-import { ModalContentComponent } from './services/modal-content/modal-content.component';
+import { ModalContentComponent } from './components/modal-content/modal-content.component';
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { LoadingSwitchComponent } from './components/loading-switch/loading-switch.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoadingSwitchComponent } from './components/loading-switch/loading-swit
     SubHeaderComponent,
     SkeletonComponent,
     LoadingSwitchComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +55,7 @@ import { LoadingSwitchComponent } from './components/loading-switch/loading-swit
     NgxSkeletonLoaderModule,
     SkeletonComponent,
     LoadingSwitchComponent,
+    ConfirmModalComponent
   ],
   providers: [
     AuthPermissionService,

@@ -28,7 +28,6 @@ export class DashboardSitesDialogComponent extends EssentialComponent {
   }
 
   public handleConfirm(): void {
-    console.log(this.form.value)
     this.dialogRef.close(this.form.value);
   }
 

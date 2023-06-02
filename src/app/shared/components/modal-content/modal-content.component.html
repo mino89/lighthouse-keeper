@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<mat-dialog-content>
+  <ng-content></ng-content>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>
+    {{cancelText}}
+  </button>
+  <button
+    mat-button
+    [disabled]="disabled"
+    (click)="confirmActionHandle()">
+    {{confirmText}}
+  </button>
+</mat-dialog-actions>

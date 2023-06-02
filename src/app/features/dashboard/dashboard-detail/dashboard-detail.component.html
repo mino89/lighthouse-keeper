@@ -1,3 +1,54 @@
-<pre>
-  {{site$ | async | json}}
-</pre>
+
+<lhk-loading-switch>
+  <ng-container lhk-loading-on>
+    <div [class]="classUtils.container">
+      <div class="mb-8">
+        <lhk-skeleton
+        [count]="1"
+        [cols]="1"/>
+      </div>
+      <div class="max-w-2xl mx-auto">
+          <lhk-skeleton
+          [count]="4"
+          type="list"
+          [rowsPerItem]="2"
+          />
+        </div>
+      </div>
+  </ng-container>
+<ng-container lhk-loading-off>
+  <ng-container *ngIf="site$|async as site">
+    <div [class]="classUtils.container">
+      <div lhk-sub-header>
+        <div lhk-sub-header-info>
+          <div class="md:flex">
+            <a mat-mini-fab
+              color="accent"
+              class="md:mr-4 mb-4"
+              [routerLink]="['/dashboard']">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <div>
+              <h1>{{site.title}}</h1>
+              <h2>{{site.url}}</h2>
+              <p>{{site.description}}</p>
+            </div>
+          </div>
+        </div>
+        <div lhk-sub-header-actions class="flex gap-2">
+          <button mat-raised-button
+            color="primary"
+            (click)="handleUpdateSite(site)">
+            Edit
+          </button>
+          <button mat-raised-button
+          color="warn"
+          (click)="handleDeleteSite(site)">
+          Delete
+        </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+</lhk-loading-switch>

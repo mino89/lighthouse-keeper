@@ -27,12 +27,6 @@
       "url": "https://zalando.it/",
       "description": "sito ecommerce che vende vestiti\n",
       "id": 3
-    },
-    {
-      "title": "twitter",
-      "url": "https://twitter.com",
-      "description": "social network",
-      "id": 4
     }
   ],
   "audits": []

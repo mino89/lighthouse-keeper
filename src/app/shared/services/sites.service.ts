@@ -55,6 +55,9 @@ export class SitesService extends FetchDataService{
     const res$ =  this.fetch<Site>({
       url: `${this.secureUrlCode}/sites/${site.id}`,
       method: 'PUT',
+      params: this.buildParams({
+        _embed: 'audits'
+      }),
       body: site
     })
     return this.loading.loadingUntilComplete(res$);
