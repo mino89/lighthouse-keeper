@@ -11,6 +11,10 @@ interface FetchDataConfig {
   params?: HttpParams
 }
 
+interface HttpParamsConfig{
+  [key: string]: string
+}
+
 export class FetchDataService {
 
   apiRoot = environment.API_ROOT
@@ -31,6 +35,14 @@ export class FetchDataService {
     }).pipe(
       catchError(this.handleError.bind(this))
     )
+  }
+
+  public buildParams(params: HttpParamsConfig): HttpParams {
+    let httpParams = new HttpParams();
+    Object.keys(params).forEach((key: string) => {
+      httpParams = httpParams.append(key, params[key]);
+    });
+    return httpParams;
   }
 
   private handleError(error: HttpErrorResponse) {
