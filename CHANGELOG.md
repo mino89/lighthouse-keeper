@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/mino89/lighthouse-keeper/compare/v0.2.0...v0.3.0) (2023-06-02)
+
+
+### Features
+
+* implemented build params method ([3e5c6b5](https://github.com/mino89/lighthouse-keeper/commit/3e5c6b5906e060ad837afae6963219d644e56e0a))
+* implemented protected urls and json-server configuration ([d8c4ff1](https://github.com/mino89/lighthouse-keeper/commit/d8c4ff1754e28c1bca603a2f5e9fd873155b30a9))
+* implemented site detail,update and delete ([3f6f871](https://github.com/mino89/lighthouse-keeper/commit/3f6f871829d7bd756c6664600f4c0e34916b0e82))
+* services a barebone for sites section ([512edba](https://github.com/mino89/lighthouse-keeper/commit/512edba6115a5a937e71d92c345d17ffc17c190c))
+* websites list page ([6c682f6](https://github.com/mino89/lighthouse-keeper/commit/6c682f6afa09c7cf480d155d208ad918613f0630))
+
 ## [0.2.0](https://github.com/mino89/lighthouse-keeper/compare/v0.1.0...v0.2.0) (2023-06-02)
 
 
