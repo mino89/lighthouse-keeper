@@ -30,6 +30,3 @@ All notable changes to this project will be documented in this file. See [standa
 * implemented signin and signout logic ([d2925d2](https://github.com/mino89/lighthouse-keeper/commit/d2925d214ff261694e86a7eadc8bf41b17f7e67c))
 * project setup ([c9c5038](https://github.com/mino89/lighthouse-keeper/commit/c9c5038510c9754274aa2846a2feea2607d00ffe))
 
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
