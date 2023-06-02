@@ -1,0 +1,39 @@
+
+<lhk-modal-content
+  (onConfirmAction)="handleConfirm()"
+  [disabled]="form.invalid"
+  title="Site">
+
+ <form [formGroup]="form" class="pt-8">
+    <mat-form-field
+      appearance="outline"
+      [classList]="classUtils.fullBlock">
+      <mat-label for="title">Site Name</mat-label>
+      <input
+        matInput
+        placeholder="Site Name"
+        formControlName="title"
+        id="title">
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      [classList]="classUtils.fullBlock">
+      <mat-label for="url">Site URL</mat-label>
+      <input
+        matInput
+        placeholder="Site URL"
+        formControlName="url"
+        id="url">
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      [classList]="classUtils.fullBlock">
+      <mat-label for="description">Site Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Site Description"
+        formControlName="description" id="description">
+      </textarea>
+    </mat-form-field>
+  </form>
+</lhk-modal-content>

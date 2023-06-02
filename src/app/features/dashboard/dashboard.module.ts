@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DashboardListComponent } from './dashboard-list/dashboard-list.component';
 import { DashboardDetailComponent } from './dashboard-detail/dashboard-detail.component';
+import { DashboardSitesDialogComponent } from './dashboard-sites-dialog/dashboard-sites-dialog.component';
 
 
 
@@ -13,7 +14,8 @@ import { DashboardDetailComponent } from './dashboard-detail/dashboard-detail.co
   declarations: [
     DashboardComponent,
     DashboardListComponent,
-    DashboardDetailComponent
+    DashboardDetailComponent,
+    DashboardSitesDialogComponent
   ],
   imports: [
     CommonModule,

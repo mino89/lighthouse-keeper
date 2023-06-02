@@ -1,5 +1,6 @@
-
 <div [class]="classUtils.container">
+  <button mat-raised-button color="primary" (click)="handleCreateSite()">Open Dialog</button>
+  <pre *ngIf="sites$ | async as sites">
+    {{ sites| json}}
+  </pre>
 </div>
-
-

@@ -9,28 +9,19 @@
     },
     {
       "email": "mino@mino.it",
-      "password": "$2a$10$uCjeCrQz3l7qvY3cJywx0O8SfUANAbxbmuoe.I02zhNtbGNx6KzcS",
-      "username": "mion",
+      "password": "$2a$10$3IcSY/qXPjLJC620ykpOaOWB8ZBdjrnJnILxk.0z7S06nmePLXxuq",
+      "username": "mino",
       "name": "mino",
       "id": 2
-    },
-    {
-      "email": "test2@test.it",
-      "password": "$2a$10$0knOyJDM9i92/EbrkEKx5./m9HS5AKJ3nJvJnZ8mNYiWaJY3Pte.e",
-      "username": "test",
-      "name": "test",
-      "id": 3
     }
   ],
-  "comments": [
+  "sites": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1,
-      "userId": 1
+      "title": "test site",
+      "url": "https://google.com",
+      "description": "a common webpage",
+      "id": 2
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "audits": []
 }

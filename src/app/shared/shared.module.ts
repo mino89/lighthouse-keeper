@@ -11,17 +11,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EssentialComponent } from './components/essential-component/essential.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ModalContentComponent } from './services/modal-content/modal-content.component';
 
 @NgModule({
   declarations: [
-
     LayoutComponent,
-       HeaderComponent,
-       FooterComponent,
-       LayoutComponent,
-       ThemeSwitchComponent,
-       EssentialComponent,
-       LoadingComponent
+    HeaderComponent,
+    FooterComponent,
+    LayoutComponent,
+    ThemeSwitchComponent,
+    EssentialComponent,
+    LoadingComponent,
+    ModalContentComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +39,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
-    NgOptimizedImage
+    ModalContentComponent,
+    NgOptimizedImage,
   ],
   providers: [
     AuthPermissionService,
@@ -46,7 +48,7 @@ import { LoadingComponent } from './components/loading/loading.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi:true
-    },
+    }
   ]
 })
 export class SharedModule { }
