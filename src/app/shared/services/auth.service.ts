@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable, catchError, of, switchMap, tap, throwError
 import { User, UserAuth } from '../models/user';
 import { Router } from '@angular/router';
 import { HttpAuthResponse } from '../models/auth';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService extends FetchDataService {
   constructor(
     http: HttpClient,
     private router: Router,
-    private feedback: FeedbackService
+    private feedback: FeedbackService,
+    private loadingService: LoadingService
   ) {
     super(http);
   }
@@ -44,7 +46,7 @@ export class AuthService extends FetchDataService {
   }
 
   public login(params: UserAuth): void {
-    this.fetch<HttpAuthResponse>({
+  this.fetch<HttpAuthResponse>({
       url: `/login`,
       method: 'POST',
       body: {
@@ -56,8 +58,7 @@ export class AuthService extends FetchDataService {
         this.feedback.getFeedback(error.error)
         throw new Error(error.error)
       }),
-    )
-    .subscribe({
+    ).subscribe({
       next: (response: HttpAuthResponse) => {4
         this.signIn(response.accessToken, response.user)
       }

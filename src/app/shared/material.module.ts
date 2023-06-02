@@ -19,6 +19,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 const MaterialComponents = [
@@ -42,7 +43,8 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatTooltipModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatChipsModule
 ]
 
 @NgModule({

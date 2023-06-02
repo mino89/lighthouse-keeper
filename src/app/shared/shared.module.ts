@@ -10,6 +10,7 @@ import { AuthPermissionService } from './guards/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EssentialComponent } from './components/essential-component/essential.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
        FooterComponent,
        LayoutComponent,
        ThemeSwitchComponent,
-       EssentialComponent
+       EssentialComponent,
+       LoadingComponent
   ],
   imports: [
     CommonModule,

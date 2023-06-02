@@ -1,0 +1,6 @@
+<mat-chip *ngIf="loading$ | async" class="d-flex" class="loading-indicator mat-elevation-z12">
+  <div class="flex">
+    <mat-spinner [diameter]="20" [strokeWidth]="2"></mat-spinner>
+    <span class="ml-2">Loading...</span>
+  </div>
+</mat-chip>
