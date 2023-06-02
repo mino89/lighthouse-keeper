@@ -19,11 +19,12 @@ export class AuthService extends FetchDataService {
 
   constructor(
     http: HttpClient,
+    feedback: FeedbackService,
     private router: Router,
-    private feedback: FeedbackService,
+
     private loadingService: LoadingService
   ) {
-    super(http);
+    super(http,feedback);
   }
 
   public signup(params: User): Observable<HttpAuthResponse> {
@@ -34,10 +35,6 @@ export class AuthService extends FetchDataService {
         ...params,
       }
     }).pipe(
-      catchError((error: HttpErrorResponse) => {
-        this.feedback.getFeedback(error.error)
-        throw new Error(error.error)
-      }),
       tap((response: HttpAuthResponse) => {
         this.feedback.getFeedback('User created successfully')
       }
@@ -52,14 +49,8 @@ export class AuthService extends FetchDataService {
       body: {
         ...params,
       }
-    })
-    .pipe(
-      catchError((error: HttpErrorResponse) => {
-        this.feedback.getFeedback(error.error)
-        throw new Error(error.error)
-      }),
-    ).subscribe({
-      next: (response: HttpAuthResponse) => {4
+    }).subscribe({
+      next: (response: HttpAuthResponse) => {
         this.signIn(response.accessToken, response.user)
       }
     })

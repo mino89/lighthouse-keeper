@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable, catchError, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
+import { FeedbackService } from "./feedback.service";
 
-interface FetchDataConfig{
+interface FetchDataConfig {
   url: string
   method: string
   body?: any
@@ -15,17 +16,18 @@ export class FetchDataService {
   apiRoot = environment.API_ROOT
 
   constructor(
-    protected http: HttpClient
+    protected http: HttpClient,
+    protected feedback: FeedbackService,
   ) {
   }
 
-  public fetch<T>(config:FetchDataConfig):Observable<T>{
+  public fetch<T>(config: FetchDataConfig): Observable<T> {
     return this.http.request<T>(config.method, `${this.apiRoot}${config.url}`, {
       body: config.body,
       headers: config.headers,
       params: config.params
     }).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError.bind(this))
     )
   }
 
@@ -37,6 +39,10 @@ export class FetchDataService {
         `Backend returned code ${error.status},` +
         `body was: ${error.error}`);
     }
-    return throwError(() => error);
+
+    return throwError(() =>{
+      this.feedback.getFeedback(error.error)
+      return error
+     });
   }
 }
