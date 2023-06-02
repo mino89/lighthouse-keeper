@@ -20,7 +20,9 @@ export class FetchDataService {
   apiRoot = environment.API_ROOT
   // this variable is defined to provide access control the mock api
   // must be set to
-  secureUrlCode = `/${environment.SECURE_URL_CODE}` || ''
+  secureUrlCode = !environment.production
+                  && environment.SECURE_URL_CODE.length
+                  && `/${environment.SECURE_URL_CODE}` || ''
   constructor(
     protected http: HttpClient,
     protected feedback: FeedbackService,
