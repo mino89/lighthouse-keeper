@@ -1,0 +1,7 @@
+{
+  "delay": 3000,
+  "middlewares":[
+    "./node_modules/json-server-auth"
+  ],
+  "watch": true
+}

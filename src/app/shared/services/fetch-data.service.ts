@@ -14,7 +14,9 @@ interface FetchDataConfig {
 export class FetchDataService {
 
   apiRoot = environment.API_ROOT
-
+  // this variable is defined to provide access control the mock api
+  // must be set to
+  secureUrlCode = `/${environment.SECURE_URL_CODE}` || ''
   constructor(
     protected http: HttpClient,
     protected feedback: FeedbackService,
@@ -41,7 +43,11 @@ export class FetchDataService {
     }
 
     return throwError(() =>{
-      this.feedback.getFeedback(error.error)
+      if(typeof error.error === 'string'){
+        this.feedback.getFeedback(error.error)
+      }else{
+        this.feedback.getFeedback(error.status.toString())
+      }
       return error
      });
   }

@@ -7,7 +7,7 @@
     "build": "ng build  --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "mock-server": "json-server --watch db.json -m ./node_modules/json-server-auth",
+    "mock-server": "json-server db.json",
     "dev": "concurrently \"npm run mock-server\" \"npm run start\"",
     "release": "standard-version",
     "release:patch": "npm run release -- --release-as patch",
