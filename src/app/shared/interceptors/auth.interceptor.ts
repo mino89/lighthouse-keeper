@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-    if (this.authService.checkToken()) {
+    if (this.authService.checkToken() && this.checkInternalApi(request.url as string)) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -34,17 +34,15 @@ export class AuthInterceptor implements HttpInterceptor {
       })
     }
 
-    return next.handle(request).pipe(tap(() => { },
+    return next.handle(request).pipe(
+      tap(() => { },
       (err: HttpErrorResponse) => {
-
           if (err.status !== 401) {
             return;
           }
           if (this.checkInternalApi(err.url as string)) {
             this.authService.logout();
           }
-
-
       }));
   }
 }
