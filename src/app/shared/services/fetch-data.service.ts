@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular
 import { Observable, catchError, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { FeedbackService } from "./feedback.service";
+import { buildUrlParams } from "../utils/http-client.util";
 
 interface FetchDataConfig {
   url: string
@@ -9,10 +10,6 @@ interface FetchDataConfig {
   body?: any
   headers?: HttpHeaders
   params?: HttpParams
-}
-
-interface HttpParamsConfig{
-  [key: string]: string
 }
 
 export class FetchDataService {
@@ -23,6 +20,8 @@ export class FetchDataService {
   secureUrlCode = !environment.production
                   && environment.SECURE_URL_CODE.length
                   && `/${environment.SECURE_URL_CODE}` || ''
+
+  buildParams = buildUrlParams
   constructor(
     protected http: HttpClient,
     protected feedback: FeedbackService,
@@ -37,14 +36,6 @@ export class FetchDataService {
     }).pipe(
       catchError(this.handleError.bind(this))
     )
-  }
-
-  public buildParams(params: HttpParamsConfig): HttpParams {
-    let httpParams = new HttpParams();
-    Object.keys(params).forEach((key: string) => {
-      httpParams = httpParams.append(key, params[key]);
-    });
-    return httpParams;
   }
 
   private handleError(error: HttpErrorResponse) {
