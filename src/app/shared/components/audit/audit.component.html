@@ -33,7 +33,18 @@
   </div>
 </div>
 <ng-template #loaded>
-  <div class="p-8">
+  <div class="p-8" *ngIf="result">
     <lhk-audit-result [result]="result"/>
+    <div class="text-center p-4 block">
+      <button
+        *ngIf="result"
+        mat-fab
+        extended
+        color="accent"
+        (click)="handleSave(result)">
+        <mat-icon>save</mat-icon>
+        Save Audit
+      </button>
+    </div>
   </div>
 </ng-template>

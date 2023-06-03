@@ -8,7 +8,7 @@ import { LightHouseAudit, LightHouseScore } from 'src/app/shared/models/lighthou
 })
 export class AuditResultComponent {
 //TODO: define a type for result
-  @Input() result!: LightHouseAudit
+  @Input() result!: LightHouseAudit | null
   scoreType = LightHouseScore
 
   changeClassBasedOnScore(score: string){

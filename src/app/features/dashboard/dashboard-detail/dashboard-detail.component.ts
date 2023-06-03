@@ -9,8 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { DashboardSitesDialogComponent } from '../dashboard-sites-dialog/dashboard-sites-dialog.component';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
-import { LightHouseAudit } from 'src/app/shared/models/lighthouse';
+import { LighHouseStrategy, LightHouseAudit } from 'src/app/shared/models/lighthouse';
 import { HttpParamsConfig } from 'src/app/shared/utils/http-client.util';
+import { AuditsService } from 'src/app/shared/services/audits.service';
+import { Audit } from 'src/app/shared/models/audit';
 
 @Component({
   selector: 'lhk-dashboard-detail',
@@ -21,10 +23,12 @@ export class DashboardDetailComponent extends EssentialComponent {
   site$!: Observable<Site>
   currentId!: number
   loading$: Observable<boolean> = this.lighthouseService.loading$
-  auditResult!: LightHouseAudit
+  auditResult!: LightHouseAudit | null
+  auditStrategy = LighHouseStrategy
   constructor(
     private route: ActivatedRoute,
     private sitesService: SitesService,
+    private auditsService: AuditsService,
     private dialog: MatDialog,
     private feedback: FeedbackService,
     private router: Router,
@@ -33,7 +37,7 @@ export class DashboardDetailComponent extends EssentialComponent {
     super();
     this.route.params.subscribe(params => {
       this.site$ = this.sitesService.getSite(params['id'])
-      this.currentId = params['id']
+      this.currentId = parseInt(params['id'])
     })
   }
 
@@ -55,7 +59,7 @@ export class DashboardDetailComponent extends EssentialComponent {
       }).subscribe({
         next: (site) => {
           this.feedback.getFeedback('Site updated successfully')
-          this.site$ = of(site)
+          this.site$ = this.sitesService.getSite(this.currentId)
         }
       })
     }
@@ -72,7 +76,8 @@ export class DashboardDetailComponent extends EssentialComponent {
     })
     this.subscription.add(
       dialogRef.afterClosed().subscribe(result =>
-        result && this.deleteSite(site))
+          result && this.deleteSite(site)
+        )
     )
   }
 
@@ -85,11 +90,54 @@ export class DashboardDetailComponent extends EssentialComponent {
     })
   }
 
-  public lighHouseAudit(site: HttpParamsConfig ) {
+  public launchAudit(site: HttpParamsConfig) {
     this.lighthouseService.audit(site).subscribe({
       next: (data) => {
         this.feedback.getFeedback('Lighthouse audit completed successfully')
         this.auditResult = data
+      }
+    })
+  }
+
+  public saveAudit(auditData: LightHouseAudit) {
+    const requestData: Audit = {
+      siteId: this.currentId,
+      date: new Date(),
+      auditData: auditData
+    }
+    this.auditsService.createAudit(requestData).subscribe(
+      {
+        next: (daa) => {
+          this.auditResult = null
+          this.feedback.getFeedback('Audit saved successfully')
+          this.site$ = this.sitesService.getSite(this.currentId)
+        }
+      }
+    )
+  }
+
+  public handleDeleteAudit(audit: Audit) {
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      width: '250',
+      data: {
+        message: 'Are you sure you want to delete this audit?',
+        confirmLabel: 'Delete',
+        dismissLabel: 'Cancel'
+      }
+    })
+    this.subscription.add(
+      dialogRef.afterClosed().subscribe(result => {
+        result && this.deleteAudit(audit)
+      })
+    )
+  }
+
+  private deleteAudit(audit: Audit) {
+    this.auditsService.deleteAudit(audit.id as number).subscribe({
+      next: () => {
+        console.log('audit deleted')
+        this.feedback.getFeedback('Audit deleted successfully')
+        this.site$ = this.sitesService.getSite(this.currentId)
       }
     })
   }

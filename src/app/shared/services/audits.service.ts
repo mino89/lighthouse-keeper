@@ -9,7 +9,7 @@ import { Audit } from '../models/audit';
 @Injectable({
   providedIn: 'root'
 })
-export class AutitsService extends FetchDataService {
+export class AuditsService extends FetchDataService {
 
   constructor(
     http: HttpClient,
@@ -40,6 +40,14 @@ export class AutitsService extends FetchDataService {
       url: `${this.secureUrlCode}/audits`,
       method: 'POST',
       body: audit
+    })
+    return this.loading.loadingUntilComplete(res$);
+  }
+
+  public deleteAudit(id: number): Observable<Audit> {
+    const res$ =  this.fetch<Audit>({
+      url: `${this.secureUrlCode}/audits/${id}`,
+      method: 'DELETE',
     })
     return this.loading.loadingUntilComplete(res$);
   }

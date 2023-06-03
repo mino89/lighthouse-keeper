@@ -1,5 +1,8 @@
+import { LightHouseAudit } from "./lighthouse";
+
 export interface Audit {
-  id: number;
-  title: string;
+  id?: number;
   siteId: number;
+  date: Date;
+  auditData: LightHouseAudit
 }
