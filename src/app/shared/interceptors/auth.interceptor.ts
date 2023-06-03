@@ -9,6 +9,7 @@ import {
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -16,6 +17,12 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService,
   ) { }
+
+  // check if the response is from the interal api
+  checkInternalApi(url: string): boolean {
+    return  url.includes(environment.API_ROOT)
+  }
+
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -28,13 +35,16 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(tap(() => { },
-      (err: any) => {
-        if (err instanceof HttpErrorResponse) {
+      (err: HttpErrorResponse) => {
+
           if (err.status !== 401) {
             return;
           }
-          this.authService.logout();
-        }
+          if (this.checkInternalApi(err.url as string)) {
+            this.authService.logout();
+          }
+
+
       }));
   }
 }
