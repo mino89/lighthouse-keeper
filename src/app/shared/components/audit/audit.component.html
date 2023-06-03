@@ -1,0 +1,39 @@
+
+
+<form [formGroup]="form" (submit)="handleSubmit()">
+  <h1>Start Audit</h1>
+  <div class="flex flex-col items-center md:flex-row gap-4 p-4">
+    <mat-form-field appearance="outline" class="md:flex-1" subscriptSizing="dynamic">
+      <mat-label for="url">URL</mat-label>
+      <input matInput formControlName="url" id="url"/>
+      <mat-error *ngIf="form.get('url')?.hasError('required')">
+        URL is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-label for="strategy">Device</mat-label>
+      <mat-select formControlName="strategy" id="strategy">
+        <mat-option [value]="strategyOptions.mobile">Mobile</mat-option>
+        <mat-option [value]="strategyOptions.desktop">Desktop</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-fab
+      color="primary"
+      [disabled]="form.invalid"
+      type="submit">
+      <mat-icon>rocket</mat-icon>
+    </button>
+  </div>
+
+</form>
+<div *ngIf="loading|async else loaded">
+  <div class="max-w-2xl mx-auto">
+    <lhk-skeleton type="audit"/>
+  </div>
+</div>
+<ng-template #loaded>
+  <div class="p-8">
+    <lhk-audit-result [result]="result"/>
+  </div>
+</ng-template>

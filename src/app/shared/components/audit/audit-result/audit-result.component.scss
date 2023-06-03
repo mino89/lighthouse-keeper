@@ -1,0 +1,21 @@
+.lhk-screenshot{
+  height: 10rem;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  img{
+    width: 100%
+  }
+}
+
+.score-color{
+  &-fast{
+    color: #4caf50;
+  }
+  &-average{
+    color: #ffc107;
+  }
+  &-slow{
+    color: #f44336;
+  }
+}

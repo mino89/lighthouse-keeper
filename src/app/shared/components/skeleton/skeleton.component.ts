@@ -11,6 +11,7 @@ export interface SkeletonStyleConfig {
   gridClass: string;
   title:  SkeletonStyleItem
   paragraph: SkeletonStyleItem
+  image: SkeletonStyleItem
 }
 @Component({
   selector: 'lhk-skeleton',
@@ -20,7 +21,7 @@ export class SkeletonComponent extends EssentialComponent implements OnInit {
   @Input() count: number = 4;
   @Input() cols: number = 4;
   @Input() rowsPerItem: number = 2 ;
-  @Input() type: 'grid' | 'list' = 'grid';
+  @Input() type: 'grid' | 'list' | 'audit' = 'grid';
   styles!: SkeletonStyleConfig
   stylesDark!: SkeletonStyleConfig
 
@@ -44,6 +45,11 @@ export class SkeletonComponent extends EssentialComponent implements OnInit {
         height: '20px',
         width: '100%'
       },
+      image: {
+        backgroundColor: '',
+        height: '10rem',
+        width: '100%'
+      },
     }
     this.stylesDark = {
       ...this.styles,
@@ -53,6 +59,10 @@ export class SkeletonComponent extends EssentialComponent implements OnInit {
       },
       paragraph: {
         ...this.styles.paragraph,
+        backgroundColor: '#333333'
+      },
+      image: {
+        ...this.styles.image,
         backgroundColor: '#333333'
       },
     }

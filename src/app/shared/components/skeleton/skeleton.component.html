@@ -1,38 +1,53 @@
-
-<ng-container *ngIf="type == 'grid'; else list">
+<ng-container *ngIf="type == 'grid'">
   <div [class]="styles.gridClass">
-    <mat-card
-      *ngFor="let item of generateSkeleton(this.count)">
+    <mat-card *ngFor="let item of generateSkeleton(this.count)">
       <mat-card-content>
-        <ngx-skeleton-loader
-          animation="progress-dark"
+        <ngx-skeleton-loader animation="progress-dark"
           [theme]="(theme | async) === 'dark' ? stylesDark.title : styles.title">
         </ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          animation="progress-dark"
+        <ngx-skeleton-loader animation="progress-dark"
           [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
         </ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          animation="progress-dark"
+        <ngx-skeleton-loader animation="progress-dark"
           [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
         </ngx-skeleton-loader>
       </mat-card-content>
     </mat-card>
   </div>
 </ng-container>
-<ng-template #list>
-  <div>
-    <mat-card
-      class="mb-8"
-      *ngFor="let item of generateSkeleton(this.count)">
-      <mat-card-content>
-        <div  *ngFor="let row of generateSkeleton(this.rowsPerItem)">
-          <ngx-skeleton-loader
-            animation="progress-dark"
-            [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
+
+<ng-container *ngIf="type == 'list'">
+
+  <mat-card class="mb-8" *ngFor="let item of generateSkeleton(this.count)">
+    <mat-card-content>
+      <div *ngFor="let row of generateSkeleton(this.rowsPerItem)">
+        <ngx-skeleton-loader animation="progress-dark"
+          [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
+        </ngx-skeleton-loader>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="type == 'audit'">
+  <mat-card>
+    <mat-card-content>
+      <div class="grid md:grid-cols-2 gap-4 my-8">
+        <div>
+          <ngx-skeleton-loader animation="progress-dark"
+            [theme]="(theme | async) === 'dark' ? stylesDark.image : styles.image">
           </ngx-skeleton-loader>
         </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</ng-template>
+        <div class="p-4 flex flex-col justify-end">
+          <div *ngFor="let row of generateSkeleton(this.rowsPerItem)">
+            <ngx-skeleton-loader animation="progress-dark"
+              [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
+            </ngx-skeleton-loader>
+          </div>
+        </div>
+      </div>
+      <ngx-skeleton-loader animation="progress-dark"
+      [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
+    </ngx-skeleton-loader>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

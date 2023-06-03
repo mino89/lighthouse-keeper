@@ -1,0 +1,48 @@
+<mat-card *ngIf="result">
+  <mat-card-content>
+    <div class="grid md:grid-cols-2 gap-4 my-8">
+      <div>
+        <figure class="lhk-screenshot">
+          <img [src]="result.screenshot.data" [alt]="'screenshot of' + result.id">
+        </figure>
+      </div>
+      <div class="p-4 flex flex-col justify-end">
+        <h1>Chrome User Experience Report Utils</h1>
+        <p>First Contentful Paint:
+          <strong [class]="changeClassBasedOnScore(result.cruxMetrics.first_contenful_paint)">
+            {{result.cruxMetrics.first_contenful_paint}}
+          </strong>
+        </p>
+        <p>First First Input Delay:
+          <strong [class]="changeClassBasedOnScore(result.cruxMetrics.first_input_delay)">
+            {{result.cruxMetrics.first_input_delay}}
+          </strong>
+        </p>
+      </div>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="mr-4">speed</mat-icon>Lighthouse Results
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item role="listitem">
+            <p>First Contentful Paint: <strong>{{result.lighthouseMetrics.first_contentful_paint}}</strong></p>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <p>Speed Index: <strong>{{result.lighthouseMetrics.speed_index}}</strong></p>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <p>Time To Interactive: <strong>{{result.lighthouseMetrics.time_to_interactive}}</strong></p>
+          </mat-list-item>
+          <mat-list-item>
+            <p>First Meaningful Paint: <strong>{{result.lighthouseMetrics.first_meaningful_paint}}</strong></p>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <h2></h2>
+  </mat-card-content>
+</mat-card>

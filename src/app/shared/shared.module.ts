@@ -17,6 +17,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { LoadingSwitchComponent } from './components/loading-switch/loading-switch.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { AuditComponent } from './components/audit/audit.component';
+import { AuditResultComponent } from './components/audit/audit-result/audit-result.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     SkeletonComponent,
     LoadingSwitchComponent,
     ConfirmModalComponent,
+    AuditComponent,
+    AuditResultComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +59,9 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     NgxSkeletonLoaderModule,
     SkeletonComponent,
     LoadingSwitchComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    AuditComponent,
+    AuditResultComponent
   ],
   providers: [
     AuthPermissionService,

@@ -3,7 +3,7 @@ import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Site } from 'src/app/shared/models/site';
 import { EssentialComponent } from 'src/app/shared/components/essential-component/essential.component';
-
+import { urlPattern } from 'src/app/shared/utils/validators.utils';
 @Component({
   selector: 'lhk-dashboard-sites-dialog',
   templateUrl: './dashboard-sites-dialog.component.html',
@@ -11,7 +11,7 @@ import { EssentialComponent } from 'src/app/shared/components/essential-componen
   ]
 })
 export class DashboardSitesDialogComponent extends EssentialComponent {
-  urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+  urlRegex = urlPattern;
 
   form = this.formBuilder.group({
     title: [this.data.title, [Validators.required]],

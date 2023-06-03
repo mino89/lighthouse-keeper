@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { FetchDataService } from './fetch-data.service';
 import { LoadingService } from './loading.service';
 import { FeedbackService } from './feedback.service';
-
 @Injectable({
   providedIn: 'root'
 })

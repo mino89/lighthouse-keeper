@@ -49,6 +49,14 @@
         </div>
       </div>
     </div>
+     <div class="max-w-2xl mx-auto">
+         <lhk-audit
+            [url]="site.url"
+            (onSubmit)="lighHouseAudit($event)"
+            [loading]="loading$ "
+            [result]="auditResult"
+            />
+        </div>
   </ng-container>
 </ng-container>
 </lhk-loading-switch>

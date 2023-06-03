@@ -17,16 +17,16 @@
   ],
   "sites": [
     {
-      "title": "test site",
-      "url": "https://google.com",
-      "description": "a common webpage",
-      "id": 2
-    },
-    {
-      "title": "ecommerce",
+      "title": "ecommerces",
       "url": "https://zalando.it/",
       "description": "sito ecommerce che vende vestiti\n",
       "id": 3
+    },
+    {
+      "title": "github",
+      "url": "https://github.com",
+      "description": "a website of github",
+      "id": 4
     }
   ],
   "audits": []
