@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/mino89/lighthouse-keeper/compare/v0.3.0...v0.4.0) (2023-06-03)
+
+
+### Features
+
+* added control for logout only if is from internal api ([6cb1c69](https://github.com/mino89/lighthouse-keeper/commit/6cb1c6933cd731fbfc35f8fde7973348d9ef7b41))
+* audit list implementation ([0e9d86d](https://github.com/mino89/lighthouse-keeper/commit/0e9d86dbe4e0db921f48f8dcf66ed48df61a961b))
+* implemented audit launch feature ([c9d33b5](https://github.com/mino89/lighthouse-keeper/commit/c9d33b57296e8ad278d129dfa8c611405f096956))
+
+
+### Bug Fixes
+
+* added control also for Authorization header that makes external api call fail ([eae148c](https://github.com/mino89/lighthouse-keeper/commit/eae148cad4ac8eddd582a7bd7d5d0f5b1c17d564))
+* contro on environment API_URL_CODE ([ebbe63f](https://github.com/mino89/lighthouse-keeper/commit/ebbe63f61f24dd23b271f47a3d6c3e0dbad20ad0))
+
 ## [0.3.0](https://github.com/mino89/lighthouse-keeper/compare/v0.2.0...v0.3.0) (2023-06-02)
 
 
@@ -29,4 +44,3 @@ All notable changes to this project will be documented in this file. See [standa
 * implemented feedback,fetch and snackbar services ([1c5b904](https://github.com/mino89/lighthouse-keeper/commit/1c5b904f677056429bd4b4f3572451f95ac491ae))
 * implemented signin and signout logic ([d2925d2](https://github.com/mino89/lighthouse-keeper/commit/d2925d214ff261694e86a7eadc8bf41b17f7e67c))
 * project setup ([c9c5038](https://github.com/mino89/lighthouse-keeper/commit/c9c5038510c9754274aa2846a2feea2607d00ffe))
-
