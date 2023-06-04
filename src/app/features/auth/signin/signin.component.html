@@ -18,12 +18,15 @@
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions class="flex justify-center m-4 gap-6">
-        <button [disabled]="signInForm.invalid" mat-raised-button color="primary" type="submit">
+        <button [disabled]="signInForm.invalid" mat-fab extended color="primary" type="submit">
+          <mat-icon>login</mat-icon>
           Sign In
         </button>
-        <button mat-raised-button color="accent" routerLink="/auth/signup">
+        <button  mat-fab extended color="accent" routerLink="/auth/signup">
+          <mat-icon>person_add</mat-icon>
           Sign Up
         </button>
+
       </mat-card-actions>
     </mat-card>
   </form>
