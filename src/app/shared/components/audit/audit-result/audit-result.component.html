@@ -8,8 +8,8 @@
       </div>
       <div class="p-4 flex flex-col justify-end">
         <h1>Chrome User Experience Report Utils</h1>
-        <div class="mb-4 flex items-center gap-2 items-center">
-          <em>{{result.id}}</em>
+        <div class="mb-4 flex items-center gap-2 w-full">
+          <em class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{{result.id}}</em>
           <a mat-icon-button [href]="result.id" target="_blank" rel="noopener noreferrer">
             <mat-icon>open_in_new</mat-icon>
           </a>
