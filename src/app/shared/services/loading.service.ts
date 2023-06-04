@@ -12,6 +12,11 @@ export class LoadingService {
   loading$ = this.loadingSubject.asObservable();
   constructor() {}
 
+  /**
+   * create a global loading observable
+   * @param {Observable<T>} obs$
+   * @returns {Observable<T>}
+   */
   public loadingUntilComplete<T>(obs$: Observable<T>): Observable<T> {
     return switchLoading(obs$, {
       start: () => this.loadingOn(),

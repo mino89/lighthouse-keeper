@@ -34,6 +34,12 @@ export class FetchDataService {
   ) {
   }
 
+  /**
+   * make http request through HttpClient
+   * @param {FetchDataConfig} config
+   * @returns {Observable<T>}
+   * @memberof FetchDataService
+   */
   public fetch<T>(config: FetchDataConfig): Observable<T> {
     return this.http.request<T>(config.method, `${this.apiRoot}${config.url}`, {
       body: config.body,
@@ -44,6 +50,10 @@ export class FetchDataService {
     )
   }
 
+  /**
+   * handle any error from http request
+   * @param {HttpErrorResponse} error
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occurred:', error.error);
@@ -63,6 +73,12 @@ export class FetchDataService {
      });
   }
 
+  /**
+   * create a loading obsevable related to service
+   * @param {Observable<T>} obs$
+   * @returns {Observable<T>}
+   * @memberof FetchDataService
+   */
   protected handleLocalLoading<T>(obs$: Observable<T>): Observable<T> {
     const globalLoading$ = this.loading.loadingUntilComplete(obs$)
     return switchLoading(globalLoading$, {

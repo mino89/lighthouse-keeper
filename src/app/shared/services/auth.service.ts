@@ -25,7 +25,11 @@ export class AuthService extends FetchDataService {
   ) {
     super(http,feedback,loading);
   }
-
+  /**
+   *
+   * @param {User} params
+   * @returns {Observable<User>}
+   */
   public signup(params: User): Observable<HttpAuthResponse> {
     return this.fetch<HttpAuthResponse>({
       url: `/signup`,
@@ -40,7 +44,10 @@ export class AuthService extends FetchDataService {
       )
     )
   }
-
+  /**
+   * @param {UserAuth} params
+   * @returns {void}
+   */
   public login(params: UserAuth): void {
   this.fetch<HttpAuthResponse>({
       url: `/login`,
@@ -55,6 +62,11 @@ export class AuthService extends FetchDataService {
     })
   }
 
+  /**
+   *
+   * @param {string} token
+   * @param {Partial<User>} user
+   */
   private signIn(token: string, user:Partial<User>) {
     localStorage.setItem('token', token)
     localStorage.setItem('user', JSON.stringify(user))

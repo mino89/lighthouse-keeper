@@ -9,7 +9,10 @@ export class FeedbackService {
   constructor(
     private snackBar: SnackbarService
   ) { }
-
+  /**
+   * return a snackbar with the provided message
+   * @param {string} message
+   */
   public getFeedback(message: string){
     return this.snackBar.open({
       message,

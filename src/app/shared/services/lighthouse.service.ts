@@ -9,6 +9,7 @@ import { LightHouseAudit } from '../models/lighthouse';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LighthouseService {
 
   loadingSubject = new BehaviorSubject<boolean>(false)
@@ -22,7 +23,11 @@ export class LighthouseService {
   ) {
 
   }
-
+  /**
+   * it will make a request to google page speed api
+   * @param {HttpParamsConfig} params
+   * @returns {Observable<LightHouseAudit>}
+   */
   public audit(params: HttpParamsConfig): Observable<LightHouseAudit> {
     const httpParams = buildUrlParams(params)
     const url = `${this.lightHouseApiUrl}?key=${this.lightHouseApiKey}`
@@ -45,6 +50,11 @@ export class LighthouseService {
       end: () => this.loadingSubject.next(false),
     })
   }
+  /**
+   * transform the response from google page speed api
+   * @param {any} response
+   * @returns {LightHouseAudit}
+   */
   private transformResponse(response: any): LightHouseAudit {
     return {
       id: response?.id,
