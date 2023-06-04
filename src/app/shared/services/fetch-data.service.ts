@@ -9,7 +9,7 @@ import { Injectable } from "@angular/core";
 
 export interface FetchDataConfig {
   url: string
-  method: string
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE'
   body?: any
   headers?: HttpHeaders
   params?: HttpParams
