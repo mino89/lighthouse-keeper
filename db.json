@@ -13,6 +13,13 @@
       "username": "mino",
       "name": "mino",
       "id": 2
+    },
+    {
+      "email": "user@user.it",
+      "password": "$2a$10$IT.dJSTLv8tvF2jHHWDtceUfM/or5NwX4ljduxKe3jI3nou8G.Zeq",
+      "username": "user",
+      "name": "user",
+      "id": 3
     }
   ],
   "sites": [

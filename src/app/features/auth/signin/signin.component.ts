@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 
 })
 export class SigninComponent extends EssentialComponent{
-
+  logo:string = 'assets/lighthousekeeper.png';
   signInForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
