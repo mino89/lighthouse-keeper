@@ -17,7 +17,9 @@
       </button>
     </div>
   </div>
-  <mat-divider />
+</div>
+<mat-divider />
+<div [class]="classUtils.container">
   <lhk-loading-switch class="block my-8">
     <ng-container lhk-loading-on>
       <lhk-skeleton [count]="5" [cols]="3">
@@ -41,7 +43,6 @@
               Audits:
               <strong>{{site.audits.length}}</strong>
             </p>
-            <mat-divider />
           </mat-card-content>
           <mat-card-actions class="mt-auto ml-auto">
             <div class="p-2">
