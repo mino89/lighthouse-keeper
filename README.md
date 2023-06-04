@@ -30,6 +30,18 @@ export const environment = {
 
 Run `npm run dev` to start both development server and mock api server
 
+The configuration is in `json-server.json` in the root folder
+```json
+{
+  "delay": 1000,
+  "middlewares":[
+    "./node_modules/json-server-auth"
+  ],
+  "watch": true
+}
+
+```
+
 ### Development server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
