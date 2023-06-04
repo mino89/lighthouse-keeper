@@ -19,6 +19,7 @@ import { LoadingSwitchComponent } from './components/loading-switch/loading-swit
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { AuditComponent } from './components/audit/audit.component';
 import { AuditResultComponent } from './components/audit/audit-result/audit-result.component';
+import { FetchDataService } from './services/fetch-data.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { AuditResultComponent } from './components/audit/audit-result/audit-resu
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi:true
-    }
-  ]
+    },
+    ]
 })
 export class SharedModule { }

@@ -17,15 +17,9 @@
   ],
   "sites": [
     {
-      "title": "ecommerces",
-      "url": "https://zalando.it/",
-      "description": "sito ecommerce che vende vestiti\n",
-      "id": 3
-    },
-    {
       "title": "github",
       "url": "https://github.com",
-      "description": "a website of github sdfadsfasdfasd ",
+      "description": "a website of github ",
       "id": 4
     },
     {

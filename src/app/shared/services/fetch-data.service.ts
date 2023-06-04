@@ -1,19 +1,20 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
-import { BehaviorSubject, Observable, catchError, throwError } from "rxjs";
+import { BehaviorSubject, Observable, catchError, throwError, pipe } from "rxjs";
 import { environment } from "src/environments/environment";
 import { FeedbackService } from "./feedback.service";
 import { buildUrlParams } from "../utils/http-client.util";
 import { LoadingService } from "./loading.service";
 import { switchLoading } from "../utils/loading.util";
+import { Injectable } from "@angular/core";
 
-interface FetchDataConfig {
+export interface FetchDataConfig {
   url: string
   method: string
   body?: any
   headers?: HttpHeaders
   params?: HttpParams
 }
-
+@Injectable()
 export class FetchDataService {
 
   apiRoot = environment.API_ROOT
