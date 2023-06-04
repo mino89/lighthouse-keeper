@@ -2,59 +2,56 @@
   <div lhk-sub-header>
     <div lhk-sub-header-info>
       <h1>Dashboard</h1>
-      <div class="flex gap-2 items-baseline">
+      <h2>Welcome Back</h2>
+      <div class="flex gap-2 items-center">
         <mat-icon>face</mat-icon>
-        <h2 class="text">
+        <strong>
           {{(currentUser$ | async).email}}
-        </h2>
+        </strong>
       </div>
     </div>
     <div lhk-sub-header-actions class="flex gap-2">
-      <button
-      mat-raised-button
-      color="primary"
-      (click)="handleCreateSite()">
+      <button mat-fab extended="" color="accent" (click)="handleCreateSite()">
+        <mat-icon>add_circle</mat-icon>
         Create Website
       </button>
     </div>
   </div>
-
+  <mat-divider />
   <lhk-loading-switch class="block my-8">
     <ng-container lhk-loading-on>
-      <lhk-skeleton [count]="5">
+      <lhk-skeleton [count]="5" [cols]="3">
       </lhk-skeleton>
     </ng-container>
     <ng-container lhk-loading-off>
-      <div class="grid md:grid-cols-4 gap-4"
-      *ngIf="sites$ | async as sites">
-          <mat-card *ngFor="let site of sites">
-            <mat-card-header>
-              <mat-card-title>
-                {{site.title}}
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="mb-8">
-                <em>
-                  <strong>{{site.url}}</strong>
-                </em>
-              </div>
-              <p *ngIf="site.audits.length">
-                Audits:
-                <strong>{{site.audits.length}}</strong>
-              </p>
-
-              </mat-card-content>
-            <mat-card-actions class="mt-auto ml-auto">
-              <button
-                [routerLink]="['/dashboard', site.id]"
-                mat-raised-button
-                color="primary">
-                  Detail
+      <div class="grid md:grid-cols-3 gap-4" *ngIf="sites$ | async as sites">
+        <mat-card *ngFor="let site of sites">
+          <mat-card-header>
+            <mat-card-title>
+              {{site.title}}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="mb-8">
+              <em>
+                <strong>{{site.url}}</strong>
+              </em>
+            </div>
+            <p *ngIf="site.audits.length">
+              Audits:
+              <strong>{{site.audits.length}}</strong>
+            </p>
+            <mat-divider />
+          </mat-card-content>
+          <mat-card-actions class="mt-auto ml-auto">
+            <div class="p-2">
+              <button [routerLink]="['/dashboard', site.id]" mat-mini-fab color="accent">
+                <mat-icon>arrow_forward</mat-icon>
               </button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </ng-container>
   </lhk-loading-switch>
 </div>

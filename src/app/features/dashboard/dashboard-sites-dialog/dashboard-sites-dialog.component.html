@@ -2,9 +2,10 @@
 <lhk-modal-content
   (onConfirmAction)="handleConfirm()"
   [disabled]="form.invalid"
-  title="Site">
-
- <form [formGroup]="form" class="pt-8">
+  title="Website">
+  <p>Fill in your website informations</p>
+  <mat-divider/>
+ <form [formGroup]="form" class="pt-4">
     <mat-form-field
       appearance="outline"
       [classList]="classUtils.fullBlock">

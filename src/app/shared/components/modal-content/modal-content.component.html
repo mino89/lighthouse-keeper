@@ -3,13 +3,24 @@
   <ng-content></ng-content>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>
+  <div class="flex gap-4 pb-8 justify-center w-full">
+    <button
+    mat-fab
+    extended
+    mat-dialog-close
+    color="warn"
+    >
+    <mat-icon>close</mat-icon>
     {{cancelText}}
   </button>
   <button
-    mat-button
+    mat-fab
+    extended
+    color="primary"
     [disabled]="disabled"
     (click)="confirmActionHandle()">
+    <mat-icon>thumb_up</mat-icon>
     {{confirmText}}
   </button>
+  </div>
 </mat-dialog-actions>

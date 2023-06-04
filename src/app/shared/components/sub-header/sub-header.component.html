@@ -1,9 +1,10 @@
-<div class="w-full md:flex justify-between items-baseline">
-  <div>
+<div class="w-full md:flex justify-between">
+  <div class="md:py-8">
     <ng-content select="[lhk-sub-header-info]"></ng-content>
   </div>
-  <div class="flex align-items-bottom gap-4">
-    <ng-content select="[lhk-sub-header-actions]"></ng-content>
+  <div class="flex align-items-bottom gap-4 mt-12 md:mt-0">
+    <div class="mt-auto mb-8">
+      <ng-content select="[lhk-sub-header-actions]"></ng-content>
+    </div>
   </div>
-
 </div>
