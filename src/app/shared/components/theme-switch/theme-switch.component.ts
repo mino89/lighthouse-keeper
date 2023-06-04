@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'lhk-theme-switch',
   templateUrl: './theme-switch.component.html',
-  styleUrls: ['./theme-switch.component.scss']
 })
 export class ThemeSwitchComponent {
   constructor(

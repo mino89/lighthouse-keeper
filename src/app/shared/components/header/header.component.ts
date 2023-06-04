@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'lhk-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+
 })
 export class HeaderComponent {
 
