@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/mino89/lighthouse-keeper/compare/v0.4.0...v1.0.0) (2023-06-04)
+
+
+### Features
+
+* added link to page and sort from api url ([32e6085](https://github.com/mino89/lighthouse-keeper/commit/32e6085bc41271d2822e2ca1fdf5491644dfb983))
+* buttons in login signup and favicon ([ce54860](https://github.com/mino89/lighthouse-keeper/commit/ce5486092e03297d5724e7a5e35f7a0bbeaf0333))
+* documented core services ([720c3ea](https://github.com/mino89/lighthouse-keeper/commit/720c3ea970e69f48b90f6c0aef45c85ccb8dda22))
+* fade animations ([dce0e08](https://github.com/mino89/lighthouse-keeper/commit/dce0e082331b2f0ae8d3f768ceaef713c475192f))
+* mocked data ([fbf3573](https://github.com/mino89/lighthouse-keeper/commit/fbf35732dd97704539f66220cf37a2fca8c93f51))
+* style for audit detail ([2d5bd85](https://github.com/mino89/lighthouse-keeper/commit/2d5bd852fd48bab1442e92476eab4b6186710f94))
+* test for core features ([1fb8edf](https://github.com/mino89/lighthouse-keeper/commit/1fb8edfbf7c5cdaca912b9bffc2e3abc55ca6719))
+
+
+### Bug Fixes
+
+* removed refuse ([4591944](https://github.com/mino89/lighthouse-keeper/commit/45919441784c4f932ae35409370676a4603f163f))
+
 ## [0.4.0](https://github.com/mino89/lighthouse-keeper/compare/v0.3.0...v0.4.0) (2023-06-03)
 
 
