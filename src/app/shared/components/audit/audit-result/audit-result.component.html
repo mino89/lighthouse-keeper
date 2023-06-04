@@ -8,7 +8,14 @@
       </div>
       <div class="p-4 flex flex-col justify-end">
         <h1>Chrome User Experience Report Utils</h1>
-        <p>First Contentful Paint:
+        <div class="mb-4 flex items-center gap-2 items-center">
+          <em>{{result.id}}</em>
+          <a mat-icon-button [href]="result.id" target="_blank" rel="noopener noreferrer">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </div>
+        <p>
+          First Contentful Paint:
           <strong [class]="changeClassBasedOnScore(result.cruxMetrics.first_contenful_paint)">
             {{result.cruxMetrics.first_contenful_paint}}
           </strong>

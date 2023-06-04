@@ -24,7 +24,9 @@ export class AuditsService extends FetchDataService {
       url: `${this.secureUrlCode}/audits`,
       method: 'GET',
       params: this.buildParams({
-        siteId: id.toString()
+        siteId: id.toString(),
+        _sort: 'date',
+        _order: 'desc',
       })
     })
 
