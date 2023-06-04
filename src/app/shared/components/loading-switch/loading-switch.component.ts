@@ -5,8 +5,7 @@ import { Observable, of } from 'rxjs';
 @Component({
   selector: 'lhk-loading-switch',
   templateUrl: './loading-switch.component.html',
-  styles: [
-  ]
+
 })
 export class LoadingSwitchComponent implements OnInit {
   loading$ = this.loadingService.loading$

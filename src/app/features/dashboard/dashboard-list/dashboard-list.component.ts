@@ -7,10 +7,12 @@ import { EssentialComponent } from 'src/app/shared/components/essential-componen
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
+import { fadeInOut } from 'src/app/shared/animations/fade-in-out.animation';
 
 @Component({
   selector: 'lhk-dashboard-list',
   templateUrl: './dashboard-list.component.html',
+  animations: [fadeInOut()]
 })
 export class DashboardListComponent extends EssentialComponent {
   sites$ = this.sitesService.getSites();

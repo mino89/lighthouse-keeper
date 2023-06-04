@@ -1,5 +1,5 @@
 <ng-container *ngIf="type == 'grid'">
-  <div [class]="styles.gridClass">
+  <div [class]="styles.gridClass" [@fadeInOut]>
     <mat-card *ngFor="let item of generateSkeleton(this.count)">
       <mat-card-content>
         <ngx-skeleton-loader animation="progress-dark"
@@ -17,8 +17,7 @@
 </ng-container>
 
 <ng-container *ngIf="type == 'list'">
-
-  <mat-card class="mb-8" *ngFor="let item of generateSkeleton(this.count)">
+  <mat-card class="mb-2" *ngFor="let item of generateSkeleton(this.count)" [@fadeInOut]>
     <mat-card-content>
       <div *ngFor="let row of generateSkeleton(this.rowsPerItem)">
         <ngx-skeleton-loader animation="progress-dark"
@@ -29,7 +28,7 @@
   </mat-card>
 </ng-container>
 <ng-container *ngIf="type == 'audit'">
-  <mat-card>
+  <mat-card [@fadeInOut]>
     <mat-card-content>
       <div class="grid md:grid-cols-2 gap-4 my-8">
         <div>

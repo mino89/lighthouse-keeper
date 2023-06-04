@@ -7,7 +7,7 @@
     </ng-container>
     <ng-container lhk-loading-off>
       <ng-container *ngIf="site$|async as site">
-        <div lhk-sub-header>
+        <div lhk-sub-header [@fadeInOut]>
           <div lhk-sub-header-info>
             <div class="md:flex">
               <a mat-mini-fab color="accent" class="md:mr-4 mb-4" [routerLink]="['/dashboard']">
@@ -46,8 +46,8 @@
 
 <lhk-loading-switch [loading]="auditLoading$">
   <ng-container lhk-loading-on>
-    <div class="max-w-2xl mx-auto">
-      <lhk-skeleton [count]="4" type="list" [rowsPerItem]="2" />
+    <div class="max-w-4xl mx-auto">
+      <lhk-skeleton [count]="4" type="list" [rowsPerItem]="1" />
     </div>
   </ng-container>
   <ng-container lhk-loading-off>

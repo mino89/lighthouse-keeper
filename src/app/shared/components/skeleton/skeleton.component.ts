@@ -1,6 +1,8 @@
+import { animation } from '@angular/animations';
 import { EssentialComponent } from '../essential-component/essential.component';
 import { ColorSchemeService } from './../../services/color-scheme.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { fadeInOut } from '../../animations/fade-in-out.animation';
 
 export interface SkeletonStyleItem {
   backgroundColor: string;
@@ -15,7 +17,8 @@ export interface SkeletonStyleConfig {
 }
 @Component({
   selector: 'lhk-skeleton',
-  templateUrl: './skeleton.component.html'
+  templateUrl: './skeleton.component.html',
+  animations: [fadeInOut()]
 })
 export class SkeletonComponent extends EssentialComponent implements OnInit {
   @Input() count: number = 4;

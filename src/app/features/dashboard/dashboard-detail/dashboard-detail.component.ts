@@ -13,10 +13,12 @@ import { LighHouseStrategy, LightHouseAudit } from 'src/app/shared/models/lighth
 import { HttpParamsConfig } from 'src/app/shared/utils/http-client.util';
 import { AuditsService } from 'src/app/shared/services/audits.service';
 import { Audit } from 'src/app/shared/models/audit';
+import { fadeInOut } from 'src/app/shared/animations/fade-in-out.animation';
 
 @Component({
   selector: 'lhk-dashboard-detail',
   templateUrl: './dashboard-detail.component.html',
+  animations: [fadeInOut()]
 })
 export class DashboardDetailComponent extends EssentialComponent {
   site$!: Observable<Site>
