@@ -1,8 +1,10 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable, catchError, throwError } from "rxjs";
+import { BehaviorSubject, Observable, catchError, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { FeedbackService } from "./feedback.service";
 import { buildUrlParams } from "../utils/http-client.util";
+import { LoadingService } from "./loading.service";
+import { switchLoading } from "../utils/loading.util";
 
 interface FetchDataConfig {
   url: string
@@ -22,9 +24,12 @@ export class FetchDataService {
                   && `/${environment.SECURE_URL_CODE}` || ''
 
   buildParams = buildUrlParams
+  private localLoadingSubject = new BehaviorSubject<boolean>(false)
+  localLoading$ = this.localLoadingSubject.asObservable()
   constructor(
     protected http: HttpClient,
     protected feedback: FeedbackService,
+    protected loading: LoadingService,
   ) {
   }
 
@@ -55,5 +60,13 @@ export class FetchDataService {
       }
       return error
      });
+  }
+
+  protected handleLocalLoading<T>(obs$: Observable<T>): Observable<T> {
+    const globalLoading$ = this.loading.loadingUntilComplete(obs$)
+    return switchLoading(globalLoading$, {
+      start: () => this.localLoadingSubject.next(true),
+      end: () => this.localLoadingSubject.next(false),
+    })
   }
 }

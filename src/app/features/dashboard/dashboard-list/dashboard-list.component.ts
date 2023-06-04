@@ -7,12 +7,10 @@ import { EssentialComponent } from 'src/app/shared/components/essential-componen
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
-import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'lhk-dashboard-list',
   templateUrl: './dashboard-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardListComponent extends EssentialComponent {
   sites$ = this.sitesService.getSites();

@@ -1,17 +1,12 @@
-<lhk-loading-switch>
-  <ng-container lhk-loading-on>
-    <div [class]="classUtils.container">
-      <div class="mb-8">
-        <lhk-skeleton [count]="1" [cols]="1" />
-      </div>
-      <div class="max-w-2xl mx-auto">
-        <lhk-skeleton [count]="4" type="list" [rowsPerItem]="2" />
-      </div>
-    </div>
-  </ng-container>
-  <ng-container lhk-loading-off>
-    <ng-container *ngIf="site$|async as site">
+<div [class]="classUtils.container">
+  <lhk-loading-switch [loading]="siteLoading$">
+    <ng-container lhk-loading-on>
       <div [class]="classUtils.container">
+          <lhk-skeleton [count]="1" [cols]="1" />
+      </div>
+    </ng-container>
+    <ng-container lhk-loading-off>
+      <ng-container *ngIf="site$|async as site">
         <div lhk-sub-header>
           <div lhk-sub-header-info>
             <div class="md:flex">
@@ -34,47 +29,27 @@
             </button>
           </div>
         </div>
-      </div>
-      <div class="max-w-2xl mx-auto">
-        <lhk-audit [url]="site.url" (onSubmit)="launchAudit($event)" (onSave)="saveAudit($event)"
-          [loading]="loading$ " [result]="auditResult" />
-      </div>
-      <ng-container *ngIf="site.audits?.length">
-        <div class="max-w-2xl mx-auto mb-8" *ngIf="site.audits as audits">
-          <mat-divider/>
-          <div class="mt-4">
-            <h2>Audits History</h2>
-          </div>
-          <mat-accordion>
-            <mat-expansion-panel *ngFor="let audit of audits">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{audit.date | date:'medium'}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  <mat-icon class="ml-auto">
-                    <ng-container *ngIf="audit.auditData.type === 'desktop' else mobile">
-                      computer
-                    </ng-container>
-                    <ng-template #mobile>
-                      phone_android
-                    </ng-template>
-                  </mat-icon>
-                  <button
-                    color="warn"
-                    mat-icon-button
-                    matTooltip="Delete audit"
-                    (click)="handleDeleteAudit(audit)">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <lhk-audit-result [result]="audit.auditData" />
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
       </ng-container>
     </ng-container>
+  </lhk-loading-switch>
+</div>
+<div class="max-w-2xl mx-auto">
+  <lhk-audit [url]="siteUrl$" (onSubmit)="launchAudit($event)" (onSave)="saveAudit($event)" [loading]="loading$ "
+    [result]="auditResult" />
+</div>
 
+<lhk-loading-switch [loading]="auditLoading$">
+  <ng-container lhk-loading-on>
+    <div class="max-w-2xl mx-auto">
+      <lhk-skeleton [count]="4" type="list" [rowsPerItem]="2" />
+    </div>
+  </ng-container>
+  <ng-container lhk-loading-off>
+    <ng-container *ngIf="audits$ | async as audits">
+      <lhk-dashboard-audits-list
+        [audits]="audits"
+        (onDelete)="handleDeleteAudit($event)"
+      />
+    </ng-container>
   </ng-container>
 </lhk-loading-switch>

@@ -1,0 +1,31 @@
+<ng-container *ngIf="audits.length">
+  <div class="max-w-2xl mx-auto mb-8" *ngIf="audits as audits">
+    <mat-divider />
+    <div class="mt-4">
+      <h2>Audits History</h2>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let audit of audits">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{audit.date | date:'medium'}}
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="ml-auto">
+              <ng-container *ngIf="audit.auditData.type === 'desktop' else mobile">
+                computer
+              </ng-container>
+              <ng-template #mobile>
+                phone_android
+              </ng-template>
+            </mat-icon>
+            <button color="warn" mat-icon-button matTooltip="Delete audit" (click)="handleDelete(audit)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <lhk-audit-result [result]="audit.auditData" />
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</ng-container>

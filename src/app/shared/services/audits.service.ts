@@ -14,17 +14,21 @@ export class AuditsService extends FetchDataService {
   constructor(
     http: HttpClient,
     feedback: FeedbackService,
-    private loading: LoadingService,
+    loading: LoadingService,
   ) {
-    super(http,feedback);
+    super(http,feedback,loading);
   }
 
-  public getAudits(): Observable<Audit[]> {
+  public getAudits(id:number): Observable<Audit[]> {
     const res$ =  this.fetch<Audit[]>({
       url: `${this.secureUrlCode}/audits`,
       method: 'GET',
+      params: this.buildParams({
+        siteId: id.toString()
+      })
     })
-    return this.loading.loadingUntilComplete(res$);
+
+    return this.handleLocalLoading(res$);
   }
 
   public getAudit(id: number): Observable<Audit> {
@@ -32,7 +36,7 @@ export class AuditsService extends FetchDataService {
       url: `${this.secureUrlCode}/audits/${id}`,
       method: 'GET',
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 
   public createAudit(audit: Audit): Observable<Audit> {
@@ -41,7 +45,7 @@ export class AuditsService extends FetchDataService {
       method: 'POST',
       body: audit
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 
   public deleteAudit(id: number): Observable<Audit> {
@@ -49,6 +53,6 @@ export class AuditsService extends FetchDataService {
       url: `${this.secureUrlCode}/audits/${id}`,
       method: 'DELETE',
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 }

@@ -1,8 +1,8 @@
 import { LighthouseService } from './../../../shared/services/lighthouse.service';
 import { SitesService } from 'src/app/shared/services/sites.service';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { EssentialComponent } from 'src/app/shared/components/essential-component/essential.component';
 import { Site } from 'src/app/shared/models/site';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,10 +17,13 @@ import { Audit } from 'src/app/shared/models/audit';
 @Component({
   selector: 'lhk-dashboard-detail',
   templateUrl: './dashboard-detail.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardDetailComponent extends EssentialComponent {
   site$!: Observable<Site>
+  audits$!: Observable<Audit[]>
+  siteUrl$!: Observable<string>
+  siteLoading$: Observable<boolean> = this.sitesService.localLoading$
+  auditLoading$: Observable<boolean> = this.auditsService.localLoading$
   currentId!: number
   loading$: Observable<boolean> = this.lighthouseService.loading$
   auditResult!: LightHouseAudit | null
@@ -36,9 +39,19 @@ export class DashboardDetailComponent extends EssentialComponent {
   ) {
     super();
     this.route.params.subscribe(params => {
-      this.site$ = this.sitesService.getSite(params['id'])
       this.currentId = parseInt(params['id'])
+      this.fetchSite()
+      this.fetchAudits()
     })
+  }
+
+  private fetchSite(id: number = this.currentId) {
+    this.site$ = this.sitesService.getSite(id)
+    this.siteUrl$ = this.site$.pipe(map(site => site.url))
+  }
+
+  private fetchAudits(id: number = this.currentId) {
+    this.audits$ = this.auditsService.getAudits(id)
   }
 
   public handleUpdateSite(site: Site) {
@@ -59,7 +72,7 @@ export class DashboardDetailComponent extends EssentialComponent {
       }).subscribe({
         next: (site) => {
           this.feedback.getFeedback('Site updated successfully')
-          this.site$ = this.sitesService.getSite(this.currentId)
+          this.fetchSite()
         }
       })
     }
@@ -110,7 +123,7 @@ export class DashboardDetailComponent extends EssentialComponent {
         next: (daa) => {
           this.auditResult = null
           this.feedback.getFeedback('Audit saved successfully')
-          this.site$ = this.sitesService.getSite(this.currentId)
+          this.fetchAudits()
         }
       }
     )
@@ -137,7 +150,7 @@ export class DashboardDetailComponent extends EssentialComponent {
       next: () => {
         console.log('audit deleted')
         this.feedback.getFeedback('Audit deleted successfully')
-        this.site$ = this.sitesService.getSite(this.currentId)
+        this.fetchAudits()
       }
     })
   }

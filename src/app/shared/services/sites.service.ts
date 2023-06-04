@@ -13,9 +13,9 @@ export class SitesService extends FetchDataService{
   constructor(
     http: HttpClient,
     feedback: FeedbackService,
-    private loading: LoadingService,
+    loading: LoadingService,
   ) {
-    super(http,feedback);
+    super(http,feedback,loading);
   }
 
 
@@ -27,18 +27,18 @@ export class SitesService extends FetchDataService{
         _embed: 'audits'
       }),
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 
   public getSite(id: number): Observable<Site> {
     const res$ =  this.fetch<Site>({
       url: `${this.secureUrlCode}/sites/${id}`,
       method: 'GET',
-      params: this.buildParams({
-        _embed: 'audits'
-      }),
+      // params: this.buildParams({
+      //   _embed: 'audits'
+      // }),
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 
   public createSite(site: Site): Observable<Site> {
@@ -47,7 +47,7 @@ export class SitesService extends FetchDataService{
       method: 'POST',
       body: site
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 
   public updateSite(site: Site): Observable<Site> {
@@ -59,7 +59,7 @@ export class SitesService extends FetchDataService{
       }),
       body: site
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 
   public deleteSite(id: number): Observable<Site> {
@@ -67,7 +67,7 @@ export class SitesService extends FetchDataService{
       url: `${this.secureUrlCode}/sites/${id}`,
       method: 'DELETE',
     })
-    return this.loading.loadingUntilComplete(res$);
+    return this.handleLocalLoading(res$);
   }
 
 }
