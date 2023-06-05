@@ -3,8 +3,9 @@
           (click)="switchScheme(themes.light)"
           aria-label="Switch to light theme"
           matTooltip="light theme"
+          type="button"
           >
-    <mat-icon>light_mode</mat-icon>
+    <mat-icon aria-label="Switch to light mode">light_mode</mat-icon>
   </button>
 </ng-container>
 <ng-template #light>
@@ -12,7 +13,8 @@
           (click)="switchScheme(themes.dark)"
           aria-label="Switch to dark theme"
           matTooltip="dark theme"
+          type="button"
           >
-    <mat-icon>dark_mode</mat-icon>
+    <mat-icon aria-label="Switch to dark mode">dark_mode</mat-icon>
   </button>
 </ng-template>

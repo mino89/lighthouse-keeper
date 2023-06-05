@@ -4,8 +4,9 @@
        mat-mini-fab
        color="accent"
        class="md:-mt-1.5 md:mr-4 mb-4"
-       [routerLink]="[this.backToUrl]">
-      <mat-icon>arrow_back</mat-icon>
+       [routerLink]="[this.backToUrl]"
+       aria-label="back to dashboard">
+      <mat-icon aria-hidden="true">arrow_back</mat-icon>
     </a>
     <div>
       <h1>{{title}}</h1>

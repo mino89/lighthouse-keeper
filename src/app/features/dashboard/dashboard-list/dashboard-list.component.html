@@ -3,7 +3,7 @@
     <div lhk-sub-header-info>
       <h2>Welcome Back</h2>
       <div class="flex gap-2 items-center">
-        <mat-icon>face</mat-icon>
+        <mat-icon aria-hidden="true">face</mat-icon>
         <strong>
           {{(currentUser$ | async).email}}
         </strong>
@@ -11,7 +11,7 @@
     </div>
     <div lhk-sub-header-actions class="flex gap-2">
       <button mat-fab extended color="accent" (click)="handleCreateSite()">
-        <mat-icon>add_circle</mat-icon>
+        <mat-icon aria-hidden="true">add_circle</mat-icon>
         Create Website
       </button>
     </div>
@@ -30,7 +30,6 @@
           <lhk-dashboard-sites-card
             [site]="site"
             (onClick)="goToDetail($event)"/>
-
         </ng-container>
       </div>
     </ng-container>

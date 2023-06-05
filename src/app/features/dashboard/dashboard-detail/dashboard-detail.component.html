@@ -13,19 +13,18 @@
              [title]="site.title">
           <div lhk-sub-header-info>
                 <div class="mt-12 mb-4 flex items-center gap-2">
-                  <mat-icon>travel_explore</mat-icon>
+                  <mat-icon aria-hidden="true">travel_explore</mat-icon>
                   <em>{{site.url}}</em>
                 </div>
-
                 <p>{{site.description}}</p>
           </div>
           <div lhk-sub-header-actions class="flex items-center gap-2">
             <button mat-fab extended color="primary" (click)="handleUpdateSite(site)">
-              <mat-icon>edit</mat-icon>
+              <mat-icon aria-hidden="true">edit</mat-icon>
               Edit
             </button>
-            <button mat-fab color="warn" (click)="handleDeleteSite(site)">
-              <mat-icon>delete</mat-icon>
+            <button mat-fab color="warn" (click)="handleDeleteSite(site)" aria-label="Delete site">
+              <mat-icon aria-hidden="true">delete</mat-icon>
             </button>
           </div>
         </div>

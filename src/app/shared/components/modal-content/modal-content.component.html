@@ -9,7 +9,7 @@
     extended
     mat-dialog-close
     color="warn"
-    >
+    type="button">
     <mat-icon>close</mat-icon>
     {{cancelText}}
   </button>
@@ -18,8 +18,9 @@
     extended
     color="primary"
     [disabled]="disabled"
-    (click)="confirmActionHandle()">
-    <mat-icon>thumb_up</mat-icon>
+    (click)="confirmActionHandle()"
+    type="button">
+    <mat-icon aria-hidden="true">thumb_up</mat-icon>
     {{confirmText}}
   </button>
   </div>
