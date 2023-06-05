@@ -8,6 +8,7 @@ import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { fadeInOut } from 'src/app/shared/animations/fade-in-out.animation';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'lhk-dashboard-list',
@@ -23,7 +24,7 @@ export class DashboardListComponent extends EssentialComponent {
     private dialog: MatDialog,
     private feedback: FeedbackService,
     private authService: AuthService,
-    private loadingService: LoadingService
+    private router: Router,
   ) { super()}
 
   public handleCreateSite(): void {
@@ -50,4 +51,7 @@ export class DashboardListComponent extends EssentialComponent {
     });
   }
 
+  goToDetail($event: Site) {
+    this.router.navigate(['/dashboard', $event.id])
+  }
 }

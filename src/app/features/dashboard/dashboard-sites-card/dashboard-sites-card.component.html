@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{site.title}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mb-8">
+      <p class="text-ellipsis truncate">
+        <strong>{{site.url}}</strong>
+      </p>
+    </div>
+    <div mat-chip *ngIf="site.audits.length">
+      Audits:
+      <strong>{{site.audits.length}}</strong>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="mt-auto ml-auto">
+    <div class="p-2">
+      <button (click)="handleClick(site)" mat-mini-fab color="primary">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

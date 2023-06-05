@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
-import { BehaviorSubject, Observable, catchError, throwError, pipe } from "rxjs";
+import {BehaviorSubject, Observable, catchError, throwError, pipe, shareReplay} from "rxjs";
 import { environment } from "src/environments/environment";
 import { FeedbackService } from "./feedback.service";
 import { buildUrlParams } from "../utils/http-client.util";

@@ -8,6 +8,7 @@ import { DashboardListComponent } from './dashboard-list/dashboard-list.componen
 import { DashboardDetailComponent } from './dashboard-detail/dashboard-detail.component';
 import { DashboardSitesDialogComponent } from './dashboard-sites-dialog/dashboard-sites-dialog.component';
 import { DashboardAuditsListComponent } from './dashboard-audits-list/dashboard-audits-list.component';
+import {DashboardSitesCardComponent} from "./dashboard-sites-card/dashboard-sites-card.component";
 
 
 
@@ -17,7 +18,8 @@ import { DashboardAuditsListComponent } from './dashboard-audits-list/dashboard-
     DashboardListComponent,
     DashboardDetailComponent,
     DashboardSitesDialogComponent,
-    DashboardAuditsListComponent
+    DashboardAuditsListComponent,
+    DashboardSitesCardComponent,
   ],
   imports: [
     CommonModule,
