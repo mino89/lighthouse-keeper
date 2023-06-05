@@ -17,9 +17,9 @@
 </ng-container>
 
 <ng-container *ngIf="type == 'list'">
-  <mat-card class="mb-2" *ngFor="let item of generateSkeleton(this.count)" [@fadeInOut]>
-    <mat-card-content>
-      <div *ngFor="let row of generateSkeleton(this.rowsPerItem)">
+  <mat-card class="mb-1" *ngFor="let item of generateSkeleton(this.count)" [@fadeInOut]>
+    <mat-card-content class="-mb-4">
+      <div *ngFor="let row of generateSkeleton(this.rowsPerItem)" >
         <ngx-skeleton-loader animation="progress-dark"
           [theme]="(theme | async) === 'dark' ? stylesDark.paragraph : styles.paragraph">
         </ngx-skeleton-loader>

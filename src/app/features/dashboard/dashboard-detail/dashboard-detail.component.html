@@ -10,7 +10,7 @@
         <div lhk-sub-header [@fadeInOut]>
           <div lhk-sub-header-info>
             <div class="md:flex">
-              <a mat-mini-fab color="accent" class="md:mr-4 mb-4" [routerLink]="['/dashboard']">
+              <a mat-mini-fab color="accent" class="md:-mt-1.5 md:mr-4 mb-4" [routerLink]="['/dashboard']">
                 <mat-icon>arrow_back</mat-icon>
               </a>
               <div>
@@ -46,7 +46,7 @@
 
 <lhk-loading-switch [loading]="auditLoading$">
   <ng-container lhk-loading-on>
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto px-4">
       <lhk-skeleton [count]="4" type="list" [rowsPerItem]="1" />
     </div>
   </ng-container>
@@ -59,3 +59,5 @@
     </ng-container>
   </ng-container>
 </lhk-loading-switch>
+
+

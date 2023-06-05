@@ -1,6 +1,6 @@
 <mat-card *ngIf="result">
   <mat-card-content>
-    <div class="grid md:grid-cols-2 gap-4 my-8">
+    <div class="md:grid md:grid-cols-2 gap-4 my-8">
       <div>
         <figure class="lhk-screenshot">
           <img [src]="result.screenshot.data" [alt]="'screenshot of' + result.id">
@@ -35,17 +35,29 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-list role="list">
-          <mat-list-item role="listitem">
-            <p>First Contentful Paint: <strong>{{result.lighthouseMetrics.first_contentful_paint}}</strong></p>
+          <mat-list-item role="listitem" >
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <span class="text-ellipsis truncate">First Contentful Paint:</span>
+              <strong>{{result.lighthouseMetrics.first_contentful_paint}}</strong>
+            </div>
           </mat-list-item>
           <mat-list-item role="listitem">
-            <p>Speed Index: <strong>{{result.lighthouseMetrics.speed_index}}</strong></p>
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <span class="text-ellipsis truncate">Speed Index:</span>
+              <strong>{{result.lighthouseMetrics.speed_index}}</strong>
+            </div>
           </mat-list-item>
           <mat-list-item role="listitem">
-            <p>Time To Interactive: <strong>{{result.lighthouseMetrics.time_to_interactive}}</strong></p>
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <span class="text-ellipsis truncate">Time To Interactive:</span>
+              <strong>{{result.lighthouseMetrics.time_to_interactive}}</strong>
+            </div>
           </mat-list-item>
           <mat-list-item>
-            <p>First Meaningful Paint: <strong>{{result.lighthouseMetrics.first_meaningful_paint}}</strong></p>
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <p class="text-ellipsis truncate">First Meaningful Paint:</p>
+              <strong>{{result.lighthouseMetrics.first_meaningful_paint}}</strong>
+            </div>
           </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
