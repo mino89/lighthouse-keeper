@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/mino89/lighthouse-keeper/compare/v1.0.0...v1.0.1) (2023-06-05)
+
+
+### Features
+
+* adde missing a11y rules ([ed62660](https://github.com/mino89/lighthouse-keeper/commit/ed626606e9efa5d20a2f21f47aa24eedfb7b57bd))
+* added shareReplay ([7550de5](https://github.com/mino89/lighthouse-keeper/commit/7550de5857518befaaf24c4b45e29ea1104b2a51))
+* dashboard card component ([efd5948](https://github.com/mino89/lighthouse-keeper/commit/efd59484c1a1c76a364ce5f9dc180237d92090ef))
+
+
+### Bug Fixes
+
+* list link on certain mobile resolutions ([af50963](https://github.com/mino89/lighthouse-keeper/commit/af50963aff221ef5442fa329c9097605c1095a35))
+* wrong behavior of component style on mobile ([27b6e20](https://github.com/mino89/lighthouse-keeper/commit/27b6e20f36bac432cb998b5a632130fcfa5e7aaf))
+
 ## [1.0.0](https://github.com/mino89/lighthouse-keeper/compare/v0.4.0...v1.0.0) (2023-06-04)
 
 
