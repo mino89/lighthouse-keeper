@@ -11,7 +11,7 @@
       </div>
     </div>
     <div lhk-sub-header-actions class="flex gap-2">
-      <button mat-fab extended="" color="accent" (click)="handleCreateSite()">
+      <button mat-fab extended color="accent" (click)="handleCreateSite()">
         <mat-icon>add_circle</mat-icon>
         Create Website
       </button>
@@ -35,14 +35,14 @@
           </mat-card-header>
           <mat-card-content>
             <div class="mb-8">
-              <em>
+              <p class="text-ellipsis truncate">
                 <strong>{{site.url}}</strong>
-              </em>
+              </p>
             </div>
-            <p *ngIf="site.audits.length">
+            <div mat-chip *ngIf="site.audits.length">
               Audits:
               <strong>{{site.audits.length}}</strong>
-            </p>
+            </div>
           </mat-card-content>
           <mat-card-actions class="mt-auto ml-auto">
             <div class="p-2">
