@@ -46,6 +46,7 @@ export class FetchDataService {
       headers: config.headers,
       params: config.params
     }).pipe(
+      shareReplay(),
       catchError(this.handleError.bind(this))
     )
   }
