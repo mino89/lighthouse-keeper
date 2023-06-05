@@ -1,6 +1,16 @@
 <div class="w-full md:flex justify-between">
-  <div class="md:py-8">
-    <ng-content select="[lhk-sub-header-info]"></ng-content>
+  <div class="md:flex md:py-8">
+    <a *ngIf="backToUrl"
+       mat-mini-fab
+       color="accent"
+       class="md:-mt-1.5 md:mr-4 mb-4"
+       [routerLink]="[this.backToUrl]">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <div>
+      <h1>{{title}}</h1>
+      <ng-content select="[lhk-sub-header-info]"></ng-content>
+    </div>
   </div>
   <div class="flex align-items-bottom gap-4 mt-12 md:mt-0">
     <div class="mt-auto mb-8">

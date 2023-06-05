@@ -19,7 +19,7 @@ import { LoadingSwitchComponent } from './components/loading-switch/loading-swit
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { AuditComponent } from './components/audit/audit.component';
 import { AuditResultComponent } from './components/audit/audit-result/audit-result.component';
-import { FetchDataService } from './services/fetch-data.service';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -38,15 +38,16 @@ import { FetchDataService } from './services/fetch-data.service';
     AuditComponent,
     AuditResultComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    NgOptimizedImage,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxSkeletonLoaderModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        NgOptimizedImage,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxSkeletonLoaderModule,
+        RouterModule
+    ],
   exports: [
     FormsModule,
     ReactiveFormsModule,

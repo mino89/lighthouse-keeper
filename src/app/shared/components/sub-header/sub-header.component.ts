@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
   ]
 })
 export class SubHeaderComponent{
-
+  @Input({required:true}) title!: string;
+  @Input() backToUrl!: string;
 }
