@@ -21,23 +21,23 @@ import { AuditComponent } from './components/audit/audit.component';
 import { AuditResultComponent } from './components/audit/audit-result/audit-result.component';
 import {RouterModule} from "@angular/router";
 
+const IeComponents =[
+  LayoutComponent,
+  HeaderComponent,
+  FooterComponent,
+  ThemeSwitchComponent,
+  EssentialComponent,
+  LoadingComponent,
+  ModalContentComponent,
+  SubHeaderComponent,
+  SkeletonComponent,
+  LoadingSwitchComponent,
+  ConfirmModalComponent,
+  AuditComponent,
+  AuditResultComponent
+]
 @NgModule({
-  declarations: [
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
-    LayoutComponent,
-    ThemeSwitchComponent,
-    EssentialComponent,
-    LoadingComponent,
-    ModalContentComponent,
-    SubHeaderComponent,
-    SkeletonComponent,
-    LoadingSwitchComponent,
-    ConfirmModalComponent,
-    AuditComponent,
-    AuditResultComponent
-  ],
+  declarations: IeComponents,
     imports: [
         CommonModule,
         MaterialModule,
@@ -52,18 +52,9 @@ import {RouterModule} from "@angular/router";
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    HeaderComponent,
-    FooterComponent,
-    LayoutComponent,
-    ModalContentComponent,
-    SubHeaderComponent,
     NgOptimizedImage,
     NgxSkeletonLoaderModule,
-    SkeletonComponent,
-    LoadingSwitchComponent,
-    ConfirmModalComponent,
-    AuditComponent,
-    AuditResultComponent
+    IeComponents
   ],
   providers: [
     AuthPermissionService,
