@@ -12,10 +12,10 @@ import { LoadingService } from './loading.service';
   providedIn: 'root',
 })
 export class AuthService extends FetchDataService {
-
-  loggedInSubject = new BehaviorSubject<boolean>(false);
+  private currentUserSubject = new BehaviorSubject<Partial<User>>(JSON.parse(localStorage.getItem('user') as string));
+  public loggedInSubject = new BehaviorSubject<boolean>(false);
   loggedIn$ = this.loggedInSubject.asObservable();
-  currentUser$ = of(JSON.parse(localStorage.getItem('user') as string) || {})
+  currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(
     http: HttpClient,
@@ -70,6 +70,7 @@ export class AuthService extends FetchDataService {
   private signIn(token: string, user:Partial<User>) {
     localStorage.setItem('token', token)
     localStorage.setItem('user', JSON.stringify(user))
+    this.currentUserSubject.next(user)
     this.loggedInSubject.next(true)
     this.router.navigate(['/'])
   }
